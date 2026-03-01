@@ -14,5 +14,17 @@ pipeline {
                 sh 'mvn test'
             }
         }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t calculator-app .'
+            }
+        }
     }
 }
