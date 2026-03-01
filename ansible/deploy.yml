@@ -1,0 +1,19 @@
+---
+- name: Deploy Calculator Application
+  hosts: local
+
+  tasks:
+
+    - name: Pull latest Docker image
+      command: docker pull 2001vivekjoshi/calculator-app:latest
+
+    - name: Stop existing container if running
+      command: docker stop calculator-container
+      ignore_errors: yes
+
+    - name: Remove existing container
+      command: docker rm calculator-container
+      ignore_errors: yes
+
+    - name: Run new container
+      command: docker run -dit --name calculator-container 2001vivekjoshi/calculator-app:latest
