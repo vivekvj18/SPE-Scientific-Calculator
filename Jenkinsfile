@@ -45,4 +45,22 @@ pipeline {
             }
         }
     }
+post {
+
+        success {
+            emailext(
+                subject: "SUCCESS: Build #${env.BUILD_NUMBER} - ${env.JOB_NAME}",
+                body: "Good news!\n\nBuild succeeded.\n\nProject: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\nCheck Jenkins for details.",
+                to: "your-email@gmail.com"
+            )
+        }
+
+        failure {
+            emailext(
+                subject: "FAILED: Build #${env.BUILD_NUMBER} - ${env.JOB_NAME}",
+                body: "Attention!\n\nBuild failed.\n\nProject: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\nCheck Jenkins logs immediately.",
+                to: "your-email@gmail.com"
+            )
+        }
+    }
 }
