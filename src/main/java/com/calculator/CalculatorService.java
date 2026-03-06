@@ -2,40 +2,54 @@ package com.calculator;
 
 public class CalculatorService {
 
-    public double squareRoot(double x) throws CalculatorException{
-        if (x < 0) {
-            throw new CalculatorException("Square root is not defined for negative numbers.");
-        }
-
-        return Math.sqrt(x);
+    public double add(double a, double b) {
+        return a + b;
     }
 
-    public long factorial(int n) throws CalculatorException {
+    public double subtract(double a, double b) {
+        return a - b;
+    }
 
+    public double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public double divide(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero not allowed");
+        }
+        return a / b;
+    }
+
+    public double power(double a, double b) {
+        return Math.pow(a, b);
+    }
+
+    public double sqrt(double a) {
+        if (a < 0) {
+            throw new ArithmeticException("Square root of negative number");
+        }
+        return Math.sqrt(a);
+    }
+
+    public long factorial(int n) {
         if (n < 0) {
-            throw new CalculatorException("Factorial is not defined for negative numbers.");
+            throw new ArithmeticException("Factorial of negative number");
         }
 
         long result = 1;
-
-        for (int i = 1; i <= n; i++) {
-            result = result * i;
+        for(int i = 1; i <= n; i++) {
+            result *= i;
         }
 
         return result;
     }
 
-    public double naturalLog(double x) throws CalculatorException {
-
-        if (x <= 0) {
-            throw new CalculatorException("Natural log is defined only for positive numbers.");
+    public double log(double a) {
+        if (a <= 0) {
+            throw new ArithmeticException("Log undefined for <= 0");
         }
 
-        return Math.log(x);
+        return Math.log(a);
     }
-
-    public double power(double base, double exponent) {
-        return Math.pow(base, exponent);
-    }
-
 }

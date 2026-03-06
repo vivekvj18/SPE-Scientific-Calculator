@@ -6,66 +6,101 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        CalculatorService service = new CalculatorService();
+        CalculatorService calc = new CalculatorService();
+        Scanner sc = new Scanner(System.in);
 
-        while (true) {
+        while(true) {
 
-            System.out.println("\n--- Scientific Calculator ---");
-            System.out.println("1. Square Root");
-            System.out.println("2. Factorial");
-            System.out.println("3. Natural Log");
-            System.out.println("4. Power");
-            System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("\n===== Scientific Calculator =====");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.println("5. Power");
+            System.out.println("6. Square Root");
+            System.out.println("7. Factorial");
+            System.out.println("8. Natural Log");
+            System.out.println("9. Exit");
 
-            int choice = scanner.nextInt();
+            System.out.print("Choose option: ");
+            int choice = sc.nextInt();
+
+            double a,b;
 
             try {
-                switch (choice) {
+
+                switch(choice) {
 
                     case 1:
-                        System.out.print("Enter number: ");
-                        double sqrtInput = scanner.nextDouble();
-                        double sqrtResult = service.squareRoot(sqrtInput);
-                        System.out.println("Result: " + sqrtResult);
+                        System.out.print("Enter a: ");
+                        a = sc.nextDouble();
+                        System.out.print("Enter b: ");
+                        b = sc.nextDouble();
+                        System.out.println("Result: " + calc.add(a,b));
                         break;
 
                     case 2:
-                        System.out.print("Enter integer: ");
-                        int factInput = scanner.nextInt();
-                        long factResult = service.factorial(factInput);
-                        System.out.println("Result: " + factResult);
+                        System.out.print("Enter a: ");
+                        a = sc.nextDouble();
+                        System.out.print("Enter b: ");
+                        b = sc.nextDouble();
+                        System.out.println("Result: " + calc.subtract(a,b));
                         break;
 
                     case 3:
-                        System.out.print("Enter number: ");
-                        double logInput = scanner.nextDouble();
-                        double logResult = service.naturalLog(logInput);
-                        System.out.println("Result: " + logResult);
+                        System.out.print("Enter a: ");
+                        a = sc.nextDouble();
+                        System.out.print("Enter b: ");
+                        b = sc.nextDouble();
+                        System.out.println("Result: " + calc.multiply(a,b));
                         break;
 
                     case 4:
-                        System.out.print("Enter base: ");
-                        double base = scanner.nextDouble();
-                        System.out.print("Enter exponent: ");
-                        double exponent = scanner.nextDouble();
-                        double powerResult = service.power(base, exponent);
-                        System.out.println("Result: " + powerResult);
+                        System.out.print("Enter a: ");
+                        a = sc.nextDouble();
+                        System.out.print("Enter b: ");
+                        b = sc.nextDouble();
+                        System.out.println("Result: " + calc.divide(a,b));
                         break;
 
                     case 5:
+                        System.out.print("Enter base: ");
+                        a = sc.nextDouble();
+                        System.out.print("Enter power: ");
+                        b = sc.nextDouble();
+                        System.out.println("Result: " + calc.power(a,b));
+                        break;
+
+                    case 6:
+                        System.out.print("Enter number: ");
+                        a = sc.nextDouble();
+                        System.out.println("Result: " + calc.sqrt(a));
+                        break;
+
+                    case 7:
+                        System.out.print("Enter number: ");
+                        int n = sc.nextInt();
+                        System.out.println("Result: " + calc.factorial(n));
+                        break;
+
+                    case 8:
+                        System.out.print("Enter number: ");
+                        a = sc.nextDouble();
+                        System.out.println("Result: " + calc.log(a));
+                        break;
+
+                    case 9:
                         System.out.println("Exiting...");
-                        scanner.close();
-                        System.exit(0);
+                        return;
 
                     default:
-                        System.out.println("Invalid choice. Try again.");
+                        System.out.println("Invalid option");
                 }
 
-            } catch (CalculatorException e) {
+            } catch(Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
+
         }
     }
 }
