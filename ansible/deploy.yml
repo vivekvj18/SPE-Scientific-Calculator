@@ -11,11 +11,11 @@
         tag: latest
         source: pull
 
-    - name: Deploy container
+    - name: Ensure container is replaced
       community.docker.docker_container:
         name: calculator-container
         image: 2001vivekjoshi/calculator-app:latest
         state: started
         recreate: true
-        restart_policy: always
-        detach: true
+        tty: true
+        interactive: true
