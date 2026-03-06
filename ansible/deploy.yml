@@ -1,7 +1,6 @@
 ---
 - name: Deploy Calculator Container
   hosts: localhost
-  become: true
 
   tasks:
 
@@ -15,6 +14,7 @@
       community.docker.docker_container:
         name: calculator-container
         state: absent
+        force_kill: true
 
     - name: Run new container
       community.docker.docker_container:
