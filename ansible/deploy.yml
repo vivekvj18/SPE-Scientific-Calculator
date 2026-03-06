@@ -11,7 +11,12 @@
         tag: latest
         source: pull
 
-    - name: Ensure container is replaced
+    - name: Stop and remove existing container
+      community.docker.docker_container:
+        name: calculator-container
+        state: absent
+
+    - name: Run new container
       community.docker.docker_container:
         name: calculator-container
         image: 2001vivekjoshi/calculator-app:latest
@@ -19,3 +24,4 @@
         recreate: true
         tty: true
         interactive: true
+        restart_policy: always
