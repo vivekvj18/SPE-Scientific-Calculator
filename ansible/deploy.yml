@@ -8,6 +8,7 @@
     - name: Pull latest Docker image
       command: docker pull 2001vivekjoshi/calculator-app:latest
 
+
     - name: Remove existing container if present
       command: docker rm -f calculator-container
       ignore_errors: yes
