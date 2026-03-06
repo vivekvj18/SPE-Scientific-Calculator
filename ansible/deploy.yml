@@ -1,7 +1,7 @@
 ---
 - name: Deploy Calculator Container
-  hosts: local
-  become: yes
+  hosts: localhost
+  become: true
 
   tasks:
 
@@ -11,12 +11,7 @@
         tag: latest
         source: pull
 
-    - name: Remove existing container if present
-      community.docker.docker_container:
-        name: calculator-container
-        state: absent
-
-    - name: Run new container
+    - name: Ensure container is replaced
       community.docker.docker_container:
         name: calculator-container
         image: 2001vivekjoshi/calculator-app:latest
