@@ -15,4 +15,4 @@
       ignore_errors: true
 
     - name: Run new container
-      shell: sudo docker run -d --name calculator-container --restart always -it 2001vivekjoshi/calculator-app:latest
+      shell: sudo docker run -d --name calculator-container --runtime=runc --restart always -it 2001vivekjoshi/calculator-app:latest
