@@ -11,8 +11,16 @@
         source: pull
 
     - name: Stop and remove existing container
-      shell: sudo docker kill calculator-container; sudo docker rm calculator-container
-      ignore_errors: true
+      community.docker.docker_container:
+        name: calculator-container
+        state: absent
 
     - name: Run new container
-      shell: sudo docker run -d --name calculator-container --runtime=runc --restart always -it 2001vivekjoshi/calculator-app:latest
+      community.docker.docker_container:
+        name: calculator-container
+        image: 2001vivekjoshi/calculator-app:latest
+        state: started
+        recreate: true
+        tty: true
+        interactive: true
+        restart_policy: always
