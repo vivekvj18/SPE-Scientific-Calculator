@@ -1,4 +1,4 @@
-# 🚀 CI/CD Pipeline for Scientific Calculator (DevOps Mini Project).
+# 🚀 CI/CD Pipeline for Scientific Calculator (DevOps Mini Project)
 
 A **DevOps-enabled Scientific Calculator Application** implemented using **Java, Maven, Jenkins, Docker, and Ansible**.
 
