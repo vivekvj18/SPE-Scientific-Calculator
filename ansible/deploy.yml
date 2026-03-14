@@ -11,7 +11,7 @@
         source: pull
 
     - name: Stop and remove existing container
-      shell: docker stop calculator-container && docker rm calculator-container
+      shell: docker kill calculator-container; docker rm calculator-container
       ignore_errors: true
 
     - name: Run new container
