@@ -22,7 +22,7 @@ public class CalculatorService {
     }
 
     public double power(double a, double b) {
-        return Math.pow(a, b)
+        return Math.pow(a, b);
     }
 
     public double sqrt(double a) {
